@@ -12,8 +12,8 @@ public class SphericalWorldGenerator : Generator {
     protected ImplicitFractal HeightMap;
 	protected ImplicitFractal HeatMap;
 	protected ImplicitFractal MoistureMap;
-    protected ImplicitFractal Cloud1Map;
-    protected ImplicitFractal Cloud2Map;
+    //protected ImplicitFractal Cloud1Map;
+    //protected ImplicitFractal Cloud2Map;
 
 	protected override void Instantiate()
 	{
@@ -30,18 +30,18 @@ public class SphericalWorldGenerator : Generator {
 	{
 		base.Generate ();
 
-        Texture2D bumpTexture = TextureGenerator.GetBumpMap (Width, Height, Tiles);
-		Texture2D normal = TextureGenerator.CalculateNormalMap(bumpTexture, 3);
+        //Texture2D bumpTexture = TextureGenerator.GetBumpMap (Width, Height, Tiles);
+		//Texture2D normal = TextureGenerator.CalculateNormalMap(bumpTexture, 3);
 
 		Sphere.materials [0].mainTexture = BiomeMapRenderer.materials[0].mainTexture;
-		Sphere.GetComponent<MeshRenderer> ().materials [0].SetTexture ("_BumpMap", normal);
+		//Sphere.GetComponent<MeshRenderer> ().materials [0].SetTexture ("_BumpMap", normal);
 		Sphere.GetComponent<MeshRenderer> ().materials [0].SetTexture ("_ParallaxMap", HeightMapRenderer.materials[0].mainTexture);
 
-        Atmosphere1.materials[0].mainTexture = TextureGenerator.GetCloud1Texture(Width, Height, Tiles);
-        Atmosphere2.materials [0].mainTexture = TextureGenerator.GetCloud2Texture (Width, Height, Tiles); 
+        //Atmosphere1.materials[0].mainTexture = TextureGenerator.GetCloud1Texture(Width, Height, Tiles);
+        //Atmosphere2.materials [0].mainTexture = TextureGenerator.GetCloud2Texture (Width, Height, Tiles); 
 
-        BumpTexture.materials[0].mainTexture = Atmosphere1.materials[0].mainTexture;
-        PaletteTexture.materials[0].mainTexture = Atmosphere2.materials[0].mainTexture;
+        //BumpTexture.materials[0].mainTexture = Atmosphere1.materials[0].mainTexture;
+        //PaletteTexture.materials[0].mainTexture = Atmosphere2.materials[0].mainTexture;
     }
 
 	protected override void Initialize()
@@ -67,7 +67,7 @@ public class SphericalWorldGenerator : Generator {
 		                                   MoistureFrequency, 
 		                                   Seed);
 
-        Cloud1Map = new ImplicitFractal(FractalType.BILLOW,
+        /*Cloud1Map = new ImplicitFractal(FractalType.BILLOW,
                                         BasisType.SIMPLEX,
                                         InterpolationType.QUINTIC,
                                         4,
@@ -79,7 +79,7 @@ public class SphericalWorldGenerator : Generator {
 		                                InterpolationType.QUINTIC, 
 		                                5, 
 		                                1.75f, 
-		                                Seed);
+		                                Seed);*/
 	}
 
 	protected override void GetData()
@@ -87,8 +87,8 @@ public class SphericalWorldGenerator : Generator {
 		HeightData = new MapData (Width, Height);
 		HeatData = new MapData (Width, Height);
 		MoistureData = new MapData (Width, Height);
-		Clouds1 = new MapData (Width, Height);
-        Clouds2 = new MapData(Width, Height);
+		//Clouds1 = new MapData (Width, Height);
+        //Clouds2 = new MapData(Width, Height);
 
         // Define our map area in latitude/longitude
         float southLatBound = -180;
@@ -147,7 +147,7 @@ public class SphericalWorldGenerator : Generator {
 				MoistureData.Data [x, y] = moistureValue;
 
                 // Cloud Data
-				Clouds1.Data[x,y] = (float)Cloud1Map.Get (x1, y1, z1);
+				/*Clouds1.Data[x,y] = (float)Cloud1Map.Get (x1, y1, z1);
 				if (Clouds1.Data[x,y] > Clouds1.Max)
 					Clouds1.Max = Clouds1.Data[x,y];
 				if (Clouds1.Data[x,y] < Clouds1.Min)
@@ -157,7 +157,7 @@ public class SphericalWorldGenerator : Generator {
                 if (Clouds2.Data[x, y] > Clouds2.Max)
                     Clouds2.Max = Clouds2.Data[x, y];
                 if (Clouds2.Data[x, y] < Clouds2.Min)
-                    Clouds2.Min = Clouds2.Data[x, y];
+                    Clouds2.Min = Clouds2.Data[x, y];*/
 
                 curLon += xDelta;
 			}			

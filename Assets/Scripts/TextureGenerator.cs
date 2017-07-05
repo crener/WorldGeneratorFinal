@@ -1,49 +1,49 @@
 ﻿using UnityEngine;
 
-public static class TextureGenerator {		
+public static class TextureGenerator
+{
+    // Height Map Colors
+    private static Color DeepColor = new Color(15 / 255f, 30 / 255f, 80 / 255f, 1);
+    private static Color ShallowColor = new Color(15 / 255f, 40 / 255f, 90 / 255f, 1);
+    private static Color RiverColor = new Color(30 / 255f, 120 / 255f, 200 / 255f, 1);
+    private static Color SandColor = new Color(198 / 255f, 190 / 255f, 31 / 255f, 1);
+    private static Color GrassColor = new Color(50 / 255f, 220 / 255f, 20 / 255f, 1);
+    private static Color ForestColor = new Color(16 / 255f, 160 / 255f, 0, 1);
+    private static Color RockColor = new Color(0.5f, 0.5f, 0.5f, 1);
+    private static Color SnowColor = new Color(1, 1, 1, 1);
 
-	// Height Map Colors
-	private static Color DeepColor = new Color(15/255f, 30/255f, 80/255f, 1);
-	private static Color ShallowColor = new Color(15/255f, 40/255f, 90/255f, 1);
-	private static Color RiverColor = new Color(30/255f, 120/255f, 200/255f, 1);
-	private static Color SandColor = new Color(198 / 255f, 190 / 255f, 31 / 255f, 1);
-	private static Color GrassColor = new Color(50 / 255f, 220 / 255f, 20 / 255f, 1);
-	private static Color ForestColor = new Color(16 / 255f, 160 / 255f, 0, 1);
-	private static Color RockColor = new Color(0.5f, 0.5f, 0.5f, 1);            
-	private static Color SnowColor = new Color(1, 1, 1, 1);
+    private static Color IceWater = new Color(210 / 255f, 255 / 255f, 252 / 255f, 1);
+    private static Color ColdWater = new Color(119 / 255f, 156 / 255f, 213 / 255f, 1);
+    private static Color RiverWater = new Color(65 / 255f, 110 / 255f, 179 / 255f, 1);
 
-	private static Color IceWater = new Color (210/255f, 255/255f, 252/255f, 1);
-	private static Color ColdWater = new Color (119/255f, 156/255f, 213/255f, 1);
-	private static Color RiverWater = new Color (65/255f, 110/255f, 179/255f, 1);
+    // Height Map Colors
+    private static Color Coldest = new Color(0, 1, 1, 1);
+    private static Color Colder = new Color(170 / 255f, 1, 1, 1);
+    private static Color Cold = new Color(0, 229 / 255f, 133 / 255f, 1);
+    private static Color Warm = new Color(1, 1, 100 / 255f, 1);
+    private static Color Warmer = new Color(1, 100 / 255f, 0, 1);
+    private static Color Warmest = new Color(241 / 255f, 12 / 255f, 0, 1);
 
-	// Height Map Colors
-	private static Color Coldest = new Color(0, 1, 1, 1);
-	private static Color Colder = new Color(170/255f, 1, 1, 1);
-	private static Color Cold = new Color(0, 229/255f, 133/255f, 1);
-	private static Color Warm = new Color(1, 1, 100/255f, 1);
-	private static Color Warmer = new Color(1, 100/255f, 0, 1);
-	private static Color Warmest = new Color(241/255f, 12/255f, 0, 1);
+    //Moisture map
+    private static Color Dryest = new Color(255 / 255f, 139 / 255f, 17 / 255f, 1);
+    private static Color Dryer = new Color(245 / 255f, 245 / 255f, 23 / 255f, 1);
+    private static Color Dry = new Color(80 / 255f, 255 / 255f, 0 / 255f, 1);
+    private static Color Wet = new Color(85 / 255f, 255 / 255f, 255 / 255f, 1);
+    private static Color Wetter = new Color(20 / 255f, 70 / 255f, 255 / 255f, 1);
+    private static Color Wettest = new Color(0 / 255f, 0 / 255f, 100 / 255f, 1);
 
-	//Moisture map
-	private static Color Dryest = new Color(255/255f, 139/255f, 17/255f, 1);
-	private static Color Dryer = new Color(245/255f, 245/255f, 23/255f, 1);
-	private static Color Dry = new Color(80/255f, 255/255f, 0/255f, 1);
-	private static Color Wet = new Color(85/255f, 255/255f, 255/255f, 1);
-	private static Color Wetter = new Color(20/255f, 70/255f, 255/255f, 1);
-	private static Color Wettest = new Color(0/255f, 0/255f, 100/255f, 1);
+    //biome map
+    private static Color Ice = Color.white;
+    private static Color Desert = new Color(238 / 255f, 218 / 255f, 130 / 255f, 1);
+    private static Color Savanna = new Color(177 / 255f, 209 / 255f, 110 / 255f, 1);
+    private static Color TropicalRainforest = new Color(66 / 255f, 123 / 255f, 25 / 255f, 1);
+    private static Color Tundra = new Color(96 / 255f, 131 / 255f, 112 / 255f, 1);
+    private static Color TemperateRainforest = new Color(29 / 255f, 73 / 255f, 40 / 255f, 1);
+    private static Color Grassland = new Color(164 / 255f, 225 / 255f, 99 / 255f, 1);
+    private static Color SeasonalForest = new Color(73 / 255f, 100 / 255f, 35 / 255f, 1);
+    private static Color BorealForest = new Color(95 / 255f, 115 / 255f, 62 / 255f, 1);
+    private static Color Woodland = new Color(139 / 255f, 175 / 255f, 90 / 255f, 1);
 
-	//biome map
-	private static Color Ice = Color.white;
-	private static Color Desert = new Color(238/255f, 218/255f, 130/255f, 1);
-	private static Color Savanna = new Color(177/255f, 209/255f, 110/255f, 1);
-	private static Color TropicalRainforest = new Color(66/255f, 123/255f, 25/255f, 1);
-	private static Color Tundra = new Color(96/255f, 131/255f, 112/255f, 1);
-	private static Color TemperateRainforest = new Color(29/255f, 73/255f, 40/255f, 1);
-	private static Color Grassland = new Color(164/255f, 225/255f, 99/255f, 1);
-	private static Color SeasonalForest = new Color(73/255f, 100/255f, 35/255f, 1);
-	private static Color BorealForest = new Color(95/255f, 115/255f, 62/255f, 1);
-	private static Color Woodland = new Color(139/255f, 175/255f, 90/255f, 1);
-    
 
     public static Texture2D CalculateNormalMap(Texture2D source, float strength)
     {
@@ -342,7 +342,7 @@ public static class TextureGenerator {
 		return texture;
 	}
 
-	public static Texture2D GetBiomeMapTexture(int width, int height, Tile[,] tiles, float coldest, float colder, float cold)
+	public static Texture2D GetBiomeMapTexture(int width, int height, Tile[,] tiles, float coldest, float colder, float cold, bool outline)
 	{
 		var texture = new Texture2D(width, height);
 		var pixels = new Color[width * height];
@@ -395,7 +395,7 @@ public static class TextureGenerator {
 				}
 
 				// draw rivers
-				if (tiles[x,y].HeightType ==  HeightType.River)
+				/*if (tiles[x,y].HeightType ==  HeightType.River)
 				{
 					float heatValue = tiles[x,y].HeatValue;		
 
@@ -407,11 +407,11 @@ public static class TextureGenerator {
 						pixels[x + y * width] = Color.Lerp (RiverWater, ShallowColor, (heatValue - colder) / (cold - colder));
 					else
 						pixels[x + y * width] = ShallowColor;
-				}
+				}*/
 
 
 				// add a outline
-				if (tiles[x,y].HeightType >= HeightType.Shore && tiles[x,y].HeightType != HeightType.River)
+				if (outline && tiles[x,y].HeightType >= HeightType.Shore && tiles[x,y].HeightType != HeightType.River)
 				{
 					if (tiles[x,y].BiomeBitmask != 15)
 						pixels[x + y * width] = Color.Lerp (pixels[x + y * width], Color.black, 0.35f);
